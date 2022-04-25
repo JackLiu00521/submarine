@@ -508,7 +508,7 @@ jobs:
         run: ./dev-support/style-check/lint-angular.sh
       - name: Go Style
         run: ./dev-support/style-check/lint-go.sh
-sonarcloud-and-codecov:
+  sonarcloud-and-codecov:
     if: github.repository == 'apache/submarine' && github.event_name == 'push' && github.ref == 'refs/heads/master'
     name: SonarCloud and Codecov
     runs-on: ubuntu-latest
