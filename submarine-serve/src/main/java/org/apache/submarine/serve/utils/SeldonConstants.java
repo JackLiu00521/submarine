@@ -44,4 +44,7 @@ public class SeldonConstants {
 
   // PyTorch
   public static final String TRITON_IMPLEMENTATION = "TRITON_SERVER";
+
+  // XGBoost
+  public static final String XGBOOST_IMPLEMENTATION = "XGBOOST_SERVER";
 }

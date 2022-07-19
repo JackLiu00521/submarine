@@ -31,11 +31,11 @@ public class SeldonXGBoostServing extends SeldonDeployment {
     v1ObjectMeta.setNamespace(SeldonConstants.DEFAULT_NAMESPACE);
     setMetadata(v1ObjectMeta);
 
-    setSpec(new SeldonDeploymentSpec(SeldonConstants.KFSERVING_PROTOCOL));
+    setSpec(new SeldonDeploymentSpec(SeldonConstants.SELDON_PROTOCOL));
 
     SeldonGraph seldonGraph = new SeldonGraph();
     seldonGraph.setName(name);
-    seldonGraph.setImplementation(SeldonConstants.TRITON_IMPLEMENTATION);
+    seldonGraph.setImplementation(SeldonConstants.XGBOOST_IMPLEMENTATION);
     seldonGraph.setModelUri(modelURI);
     SeldonPredictor seldonPredictor = new SeldonPredictor();
     seldonPredictor.setSeldonGraph(seldonGraph);
