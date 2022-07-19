@@ -48,6 +48,7 @@ import org.apache.submarine.commons.utils.exception.SubmarineRuntimeException;
 import org.apache.submarine.serve.pytorch.SeldonPytorchServing;
 import org.apache.submarine.serve.seldon.SeldonDeployment;
 import org.apache.submarine.serve.tensorflow.SeldonTFServing;
+import org.apache.submarine.serve.xgboost.SeldonXGBoostServing;
 import org.apache.submarine.server.k8s.utils.K8sUtils;
 import org.apache.submarine.server.api.Submitter;
 import org.apache.submarine.server.api.common.CustomResourceType;
@@ -599,8 +600,10 @@ public class K8sSubmitter implements Submitter {
     SeldonDeployment seldonDeployment;
     if (modelType.equals("tensorflow")){
       seldonDeployment = new SeldonTFServing(modelName, modelURI);
-    } else if (modelType.equals("pytorch")){
+    } else if (modelType.equals("pytorch")) {
       seldonDeployment = new SeldonPytorchServing(modelName, modelURI);
+    } else if (modelType.equals("xgboost")) {
+      seldonDeployment = new SeldonXGBoostServing(modelName, modelURI);
     } else {
       throw new SubmarineRuntimeException("Given serve type: " + modelType + " is not supported.");
     }
