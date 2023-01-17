@@ -1,4 +1,4 @@
-/*
+/*!
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
  * distributed with this work for additional information
@@ -17,29 +17,29 @@
  * under the License.
  */
 
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from '@submarine/core';
+import { Breadcrumb } from "antd";
+import "./Header.scss";
 
-const routes: Routes = [
-  {
-    path: '',
-    pathMatch: 'full',
-    redirectTo: 'workbench',
-  },
-  {
-    path: 'workbench',
-    // canActivate: [AuthGuard],
-    loadChildren: () => import('./pages/workbench/workbench.module').then((m) => m.WorkbenchModule),
-  },
-  {
-    path: 'user',
-    loadChildren: () => import('./pages/user/user.module').then((m) => m.UserModule),
-  },
-];
+function Header() {
+  return (
+    <div className="header">
+      <div className="breadcrumb">
+        <Breadcrumb>
+          <Breadcrumb.Item>
+            <a href="">Home</a>
+          </Breadcrumb.Item>
+          <Breadcrumb.Item>
+            <a href="">Notebook</a>
+          </Breadcrumb.Item>
+        </Breadcrumb>
+      </div>
+      <div>
+        <br />
+        <div className="page-heading">Notebook</div>
+        <br />
+      </div>
+    </div>
+  );
+}
 
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
-})
-export class AppRoutingModule {}
+export default Header;

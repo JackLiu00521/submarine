@@ -27,6 +27,7 @@ import User from "@submarine/pages/workbench/user/User";
 import DataDict from "@submarine/pages/workbench/data_dict/DataDict";
 import Department from "@submarine/pages/workbench/department/Department";
 import Model from "@submarine/pages/workbench/model/Model";
+import Header from "@submarine/components/Header";
 import { Layout } from "antd";
 import { useState } from "react";
 import "./App.scss";
@@ -41,12 +42,13 @@ function App() {
           isCollapsed: isCollapsed,
           setIsCollapsed: setIsCollapsed,
         }}
-      ></Sidebar>
+      />
       <Layout
         data-testid="page-layout"
         className="app-layout"
         style={isCollapsed ? { paddingLeft: "80px", height: "100vh" } : { paddingLeft: "256px", height: "100vh" }}
       >
+        <Header />
         <Routes>
           <Route path="/" element={<Navigate replace to="experiment" />} />
           <Route path="notebook" element={<Notebook />} />

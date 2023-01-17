@@ -17,29 +17,17 @@
  * under the License.
  */
 
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from '@submarine/core';
+import { NotebookSpec } from "@submarine/rest";
 
-const routes: Routes = [
-  {
-    path: '',
-    pathMatch: 'full',
-    redirectTo: 'workbench',
-  },
-  {
-    path: 'workbench',
-    // canActivate: [AuthGuard],
-    loadChildren: () => import('./pages/workbench/workbench.module').then((m) => m.WorkbenchModule),
-  },
-  {
-    path: 'user',
-    loadChildren: () => import('./pages/user/user.module').then((m) => m.UserModule),
-  },
-];
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
-})
-export class AppRoutingModule {}
+export interface NotebookInfo {
+  notebookId: string;
+  name: string;
+  uid: string;
+  //   url: Url;
+  url: string;
+  status: string;
+  reason: string;
+  createdTime: string;
+  deletedTime: string;
+  spec: NotebookSpec;
+}

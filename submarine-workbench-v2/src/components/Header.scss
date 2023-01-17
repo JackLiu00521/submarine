@@ -1,4 +1,4 @@
-/*
+/*!
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
  * distributed with this work for additional information
@@ -17,29 +17,28 @@
  * under the License.
  */
 
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from '@submarine/core';
+.header{
+    // display: flex;
+    // margin: "-24px -24px 0";
+    flex-direction: column;
+    padding: 1rem;
+    gap:1rem;
+    background-color: #fff;
+    font-family: inherit;
+    padding-bottom: 1.5rem;
 
-const routes: Routes = [
-  {
-    path: '',
-    pathMatch: 'full',
-    redirectTo: 'workbench',
-  },
-  {
-    path: 'workbench',
-    // canActivate: [AuthGuard],
-    loadChildren: () => import('./pages/workbench/workbench.module').then((m) => m.WorkbenchModule),
-  },
-  {
-    path: 'user',
-    loadChildren: () => import('./pages/user/user.module').then((m) => m.UserModule),
-  },
-];
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
-})
-export class AppRoutingModule {}
+    .breadcrumb{
+        background-color: "white";
+        padding-left: "30px";
+        padding-top: "20px";
+        display: flex;
+        color: #aaa;
+        font-weight: 400;
+    }
+    .page-heading{
+        display: flex;
+        align-items: center;
+        font-size: 1.4rem;
+        font-weight: 500;
+    }
+}
